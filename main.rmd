@@ -1,0 +1,38 @@
+---
+title: "pain and suffering"
+author: "rainer"
+output: html_document
+---
+
+```{r}
+library(rmarkdown)
+library(reticulate)
+source("module/Rscript.R")
+pythonScript = source_python("module/pythonScript.py")
+```
+creating all the obj objects
+```{r}
+obj000 = obj("000", 10,10,0,0,0,0)
+obj001 = obj("001",1,1,1,1,1,1)
+obj002 = obj("002",-20,12,0,0,0,0)
+```
+
+    
+Then, via functions from module.Rscript, we create a data frame in the R envirnment with all the necessary data from the previous instances of obj(). This data frame will be used to visualize our simulation."
+```{r}
+createDf()
+```
+    
+main loop
+
+
+```{r}
+while (TRUE){
+  makePlot()
+  for (i in obj$existing_objs){
+    obj$updateObjA(i)
+    obj$updateObjVP(i)
+  }
+  updateDf()
+}
+```

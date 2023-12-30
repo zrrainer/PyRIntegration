@@ -33,16 +33,18 @@ createDf = function(){
 }
 
 
-#add a row to df. works
-addAgent = function(agentInfo){  #agent info should be in a list - ["id", posx, posy]
-    localdf = get("df", envir = .GlobalEnv) 
-    localdf = rbind(localdf, agentInfo)
-    assign("df",localdf, envir = .GlobalEnv)
-}
-
-
 
 getDf = function(){
     localdf = get("df", envir = .GlobalEnv) 
     return(localdf)
 }
+
+#clear df. then add info from every existing obj insatnce
+updateDf = function(){
+    createDf()
+    for (i in obj$existing_objs){
+      row = list(i$id, i$posx, i$posy)
+      df <<- rbind(.GlobalEnv$df, row)
+    }
+}
+

@@ -1,11 +1,11 @@
-import rpy2
+# import rpy2
 import math
 import numpy
 import scipy
 from scipy import constants
 
-class agent():
-    existing_agents = []
+class obj():
+    existing_objs = []
 
     
     def __init__(self, id, posx, posy, dx, dy, d2x, d2y):
@@ -16,18 +16,18 @@ class agent():
         self.dy = dy
         self.d2x = d2x
         self.d2y = d2y
-        agent.existing_agents.append(self)
+        obj.existing_objs.append(self)
         
 
 
-    def updateAgentA(self): 
+    def updateObjA(self): 
         """
         calculate and update the acceleration (d2x,d2y) of an instance
  
         Parameters
         ----------
-        self: agent
-            an instance of agent
+        self: obj
+            an instance of obj
  
         Returns
         -------
@@ -36,14 +36,14 @@ class agent():
         self.d2x = 0
         self.d2y = 0
         
-        #get a list of all other agents
-        other_agents = list(agent.existing_agents)
-        other_agents.remove(self)
+        #get a list of all other objs
+        other_objs = list(obj.existing_objs)
+        other_objs.remove(self)
         
-        #add the acceleration due to gravitation of every other agent to self.d2x/d2y
-        for other_agent in other_agents:
-            r = math.dist([self.posx, self.posy],[other_agent.posx, other_agent.posy]) + 15  #distance with a softening factor
-            theta = agent.getAngle((other_agent.posy - self.posy),(other_agent.posx - self.posx)) #angle
+        #add the acceleration due to gravitation of every other obj to self.d2x/d2y
+        for other_obj in other_objs:
+            r = math.dist([self.posx, self.posy],[other_obj.posx, other_obj.posy]) + 15  #distance with a softening factor
+            theta = obj.getAngle((other_obj.posy - self.posy),(other_obj.posx - self.posx)) #angle
             m = 50000000000000 #mass of object
             
             if r != 0:
@@ -51,14 +51,14 @@ class agent():
                 self.d2y += ((m * scipy.constants.G)/(r**2)) * numpy.sin(theta)
                     
        
-    def updateAgentVP(self): 
+    def updateObjVP(self): 
         """
         calculate and update the velocity (dx,dy) and position (posx, posy) of an instance
  
         Parameters
         ----------
-        self: agent
-            an instance of agent
+        self: obj
+            an instance of obj
  
         Returns
         -------
@@ -71,9 +71,13 @@ class agent():
         self.posx += self.dx * dt
         self.posy += self.dy * dt
         self.posx = round(self.posx, 10)
-        self.posy = round(self.posy, 10)       
+        self.posy = round(self.posy, 10)
+        
 
-
+    def returnobjInfo(self):
+      return [self.id, self.posx, self.posy]
+    
+    
     @classmethod
     def getAngle(cls, ydiff, xdiff):
         """
@@ -97,7 +101,7 @@ class agent():
                 return math.pi/2
             else:
                 return -math.pi/2
-        #xdiff and ydiff cant both be 0 because updateAgentA() ensured that distance is not 0
+        #xdiff and ydiff cant both be 0 because updateobjA() ensured that distance is not 0
         
         #edge case: ydiff = 0
         if ydiff == 0:
