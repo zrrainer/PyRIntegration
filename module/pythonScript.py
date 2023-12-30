@@ -19,20 +19,8 @@ class obj():
         obj.existing_objs.append(self)
         
 
-
+    #calculate and update the acceleration (d2x,d2y) of an obj instance
     def updateObjA(self): 
-        """
-        calculate and update the acceleration (d2x,d2y) of an instance
- 
-        Parameters
-        ----------
-        self: obj
-            an instance of obj
- 
-        Returns
-        -------
-        void
-        """
         self.d2x = 0
         self.d2y = 0
         
@@ -49,21 +37,10 @@ class obj():
             if r != 0:
                 self.d2x += ((m * scipy.constants.G)/(r**2)) * numpy.cos(theta) #acceleration, velocity, position
                 self.d2y += ((m * scipy.constants.G)/(r**2)) * numpy.sin(theta)
+                
                     
-       
+    #calculate and update the velocity (dx,dy) and position (posx, posy) of an obj instance       
     def updateObjVP(self): 
-        """
-        calculate and update the velocity (dx,dy) and position (posx, posy) of an instance
- 
-        Parameters
-        ----------
-        self: obj
-            an instance of obj
- 
-        Returns
-        -------
-        void
-        """
         dt = 0.1
         
         self.dx += self.d2x * dt
@@ -74,27 +51,17 @@ class obj():
         self.posy = round(self.posy, 10)
         
 
+
     def returnobjInfo(self):
       return [self.id, self.posx, self.posy]
     
     
+    # helper function: find the angle in radians between the line from origin to (ydiff,xdiff) and the x axis
+    #Parameters: ydiff = y coordinate of object
+    #            xdiff = x coordinate
+    #returns the angle in radians
     @classmethod
     def getAngle(cls, ydiff, xdiff):
-        """
-        helper function: find the angle in radians between the line from origin to (ydiff,xdiff) and the x axis
- 
-        Parameters
-        ----------
-        ydiff: int, float
-            y coordinate
-        xdiff: int, float
-            x coordinate
- 
-        Returns
-        -------
-        float
-            the angle in radians
-        """
         #edge case: xdiff = 0 
         if xdiff == 0:
             if ydiff > 0 :

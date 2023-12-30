@@ -3,7 +3,7 @@ library(tidymodels)
 library(dplyr)
 
 
-
+#reads df, return a ggplot2 object
 makePlot = function(){
     localdf = get("df", envir = .GlobalEnv) 
     localdf = drop_na(localdf)
@@ -24,7 +24,7 @@ makePlot = function(){
     return(p)
 }
 
-#create the df in R envirnment. works
+#create the df in R envirnment
 createDf = function(){
     localdf = data.frame(id = c(NA), 
                  posx = c(NA),
@@ -33,7 +33,7 @@ createDf = function(){
 }
 
 
-
+#returns df
 getDf = function(){
     localdf = get("df", envir = .GlobalEnv) 
     return(localdf)

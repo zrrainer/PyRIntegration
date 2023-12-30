@@ -10,7 +10,16 @@ library(reticulate)
 source("module/Rscript.R")
 pythonScript = source_python("module/pythonScript.py")
 ```
-creating all the obj objects
+
+obj is a python class that stores information about a single object in the simulation. its instance variables are
+
+id(string)
+posx(float): the objects x coordinate
+posy(float): y coordinate
+dx(float): velocity along x axis
+dy(float)
+d2x(float): acceleration along xaxis)
+d2y(float)
 ```{r}
 obj000 = obj("000", 10,10,0,0,0,0)
 obj001 = obj("001",1,1,1,1,1,1)
@@ -18,21 +27,33 @@ obj002 = obj("002",-20,12,0,0,0,0)
 ```
 
     
-Then, via functions from module.Rscript, we create a data frame in the R envirnment with all the necessary data from the previous instances of obj(). This data frame will be used to visualize our simulation."
+via functions from Rscript.R, we create a dataframe df that stores all the relevant info about the objects.
 ```{r}
-createDf()
+createDf() #creates an empty dataframe
+updateDf() #adds data from all the obj objects to df
 ```
     
+    
 main loop
-
-
 ```{r}
 while (TRUE){
-  makePlot()
-  for (i in obj$existing_objs){
+  makePlot() #visualize data stored in df. return ggplot object.
+  for (i in obj$existing_objs){ #calculate the position of every obj instance for the next frame
     obj$updateObjA(i)
     obj$updateObjVP(i)
   }
-  updateDf()
+  updateDf() #update df with all the updated data from the previous step
 }
 ```
+
+
+test: displaying objects
+```{r}
+x11()
+
+library(jpeg)
+img <- readJPEG("worm.jpg")
+image(img)
+
+```
+
