@@ -19,8 +19,18 @@ class obj():
         obj.existing_objs.append(self)
         
 
-    #calculate and update the acceleration (d2x,d2y) of an obj instance
     def updateObjA(self): 
+        """
+        calculate and update the acceleration (d2x,d2y) of an obj instance
+ 
+        Parameters
+        ----------
+        self: an instance of obj
+ 
+        Returns
+        -------
+        void
+        """
         self.d2x = 0
         self.d2y = 0
         
@@ -39,8 +49,19 @@ class obj():
                 self.d2y += ((m * scipy.constants.G)/(r**2)) * numpy.sin(theta)
                 # 
                     
-    #calculate and update the velocity (dx,dy) and position (posx, posy) of an obj instance       
+     
     def updateObjVP(self): 
+        """
+        calculate and update the velocity (dx,dy) and position (posx, posy) of an obj instance
+ 
+        Parameters
+        ----------
+        self: an instance of obj
+ 
+        Returns
+        -------
+        void
+        """
         dt = 0.1
         
         self.dx += self.d2x * dt
@@ -55,6 +76,10 @@ class obj():
     def returnobjInfo(self):
       return [self.id, self.posx, self.posy]
     
+
+
+
+
     
     # helper function: find the angle in radians between the line from origin to (ydiff,xdiff) and the x axis
     #Parameters: ydiff = y coordinate of object

@@ -24,7 +24,7 @@ makePlot = function(){
     return(p)
 }
 
-#create the df in R envirnment
+#create an empty datafrane df
 createDf = function(){
     localdf = data.frame(id = c(NA), 
                  posx = c(NA),
@@ -33,13 +33,13 @@ createDf = function(){
 }
 
 
-#returns df
+#returns df object
 getDf = function(){
     localdf = get("df", envir = .GlobalEnv) 
     return(localdf)
 }
 
-#clear df. then add info from every existing obj insatnce
+#update df with data in every existing obj instance
 updateDf = function(){
     createDf()
     for (i in obj$existing_objs){
@@ -48,3 +48,10 @@ updateDf = function(){
     }
 }
 
+#append row to df
+#param: ObjInfo(list): the row to be appended
+AppendRow = function(row){  
+    localdf = get("df", envir = .GlobalEnv) 
+    localdf = rbind(localdf, row)
+    assign("df",localdf, envir = .GlobalEnv)
+}
