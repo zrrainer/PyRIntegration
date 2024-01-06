@@ -37,7 +37,7 @@ class obj():
             if r != 0:
                 self.d2x += ((m * scipy.constants.G)/(r**2)) * numpy.cos(theta) #acceleration, velocity, position
                 self.d2y += ((m * scipy.constants.G)/(r**2)) * numpy.sin(theta)
-                
+                # 
                     
     #calculate and update the velocity (dx,dy) and position (posx, posy) of an obj instance       
     def updateObjVP(self): 
