@@ -1,0 +1,9 @@
+Package: RPyIntegration
+Title: An Experiement in Integrating Python and R Code
+Authors@R: 
+    person("Rainer", "Zhang", , "zrrainer@gmail.com")
+Imports:
+    tidyverse
+    tidymodel
+    dplyr
+    reticulate

@@ -1,4 +1,3 @@
-# import rpy2
 import math
 import numpy
 import scipy

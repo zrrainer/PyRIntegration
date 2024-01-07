@@ -1,0 +1,4 @@
+rpy2
+numpy
+scipy
+IPython
