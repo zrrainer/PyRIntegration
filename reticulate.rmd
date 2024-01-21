@@ -37,12 +37,13 @@ updateDf() #adds data from all the obj objects to df
 main loop
 ```{r}
 while (TRUE){
-  makePlot() #visualize data stored in df. return ggplot object.
+  print(makePlot()) #visualize data stored in df. return ggplot object.
   for (i in obj$existing_objs){ #calculate the position of every obj instance for the next frame
     obj$updateObjA(i)
     obj$updateObjVP(i)
   }
   updateDf() #update df with all the updated data from the previous step
+  Sys.sleep(0.1)
 }
 ```
 
@@ -50,10 +51,6 @@ while (TRUE){
 test: displaying objects
 ```{r}
 x11()
-
-library(jpeg)
-img <- readJPEG("worm.jpg")
-image(img)
 
 ```
 
