@@ -23,4 +23,4 @@ reflections on reticulate:
 
 direct access to the methods in the python script. cool. awesome. 10/10. the trouble is displaying the ggplot objects.
 
-while using rpy2 I took the easy way out and wrote all the code in a ipynb file, and displayed the outputs using, uh, display(). rmd do not have the same behavior. the main loop for the animation never ends, and the ggplot objects are never actually printed out. 
+while using rpy2 I took the easy way out and wrote all the code in a ipynb file, and displayed the outputs using, uh, display(). R markdown do not have the same behavior. the main loop for the animation never ends, and the ggplot objects are never actually printed out. 
