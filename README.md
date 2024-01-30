@@ -35,4 +35,4 @@ display() was more of an easy way out than I thought. without using the IPython.
 
 additionally, ktinker....... every time i call update on a tk window it flashes for a second. which would be fine if i werent updating every 10 ms. 
 
-![]https://github.com/zrrainer/RPyIntegration/blob/main/images/devil-may-cry-devil-may-cry3.gif
+![](https://github.com/zrrainer/RPyIntegration/blob/main/images/devil-may-cry-devil-may-cry3.gif)
