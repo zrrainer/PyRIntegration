@@ -5,7 +5,7 @@
 
 I have written some simple code that runs a physics simulation, calculated via python and visualized via the R package ggplot2. This repo documents me playing with (losing sanity over) rpy2, the most popular python package for integrating R code into python, and reticulate, themost popular R package for integrating python code into R. 
 
-
+\n
 
 some reflections on rpy2:
 
@@ -16,8 +16,7 @@ RcreateDf()
 
 Oh, rpy2 also does not have windows binaries. So.
 
-
-
+\n
 
 reflections on reticulate:
 

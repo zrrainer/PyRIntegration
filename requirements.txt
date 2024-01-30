@@ -1,4 +1,5 @@
-#rpy2
+rpy2
 numpy
 scipy
-IPython
+ktinker
+PIL

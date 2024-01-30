@@ -19,10 +19,9 @@ makePlot = function(){
         axis.title.y=element_blank(),
         axis.text.y=element_blank(),
         axis.ticks.y=element_blank(),
-        axis.line.y=element_blank(),)
+        axis.line.y=element_blank())
 
-    return(p)
-}
+    ggsave("plot.jpeg", plot = p, path = "images")}
 
 #create an empty datafrane df
 createDf = function(){
