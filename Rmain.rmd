@@ -1,0 +1,58 @@
+---
+title: "pain and suffering"
+author: "rainer"
+output: html_document
+---
+
+![](https://github.com/zrrainer/RPyIntegration/blob/main/images/devil-may-cry-devil-may-cry3.gif)
+
+```{r}
+library(rmarkdown)
+library(reticulate)
+source("module/Rscript.R")
+pythonScript = source_python("module/pythonScript.py")
+```
+
+obj is a python class that stores information about a single object in the simulation. its instance variables are
+
+id(string)
+posx(float): the objects x coordinate
+posy(float): y coordinate
+dx(float): velocity along x axis
+dy(float)
+d2x(float): acceleration along xaxis)
+d2y(float)
+```{r}
+obj000 = obj("000", 10,10,0,0,0,0)
+obj001 = obj("001",1,1,1,1,1,1)
+obj002 = obj("002",-20,12,0,0,0,0)
+```
+
+    
+via functions from Rscript.R, we create a dataframe df that stores all the relevant info about the objects.
+```{r}
+createDf() #creates an empty dataframe
+updateDf() #adds data from all the obj objects to df
+```
+    
+    
+main loop
+```{r}
+while (TRUE){
+  print(makePlot()) #visualize data stored in df. return ggplot object.
+  for (i in obj$existing_objs){ #calculate the position of every obj instance for the next frame
+    obj$updateObjA(i)
+    obj$updateObjVP(i)
+  }
+  updateDf() #update df with all the updated data from the previous step
+  Sys.sleep(0.1)
+}
+```
+
+
+test: displaying objects
+```{r}
+x11()
+
+```
+

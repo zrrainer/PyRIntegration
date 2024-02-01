@@ -4,10 +4,10 @@ library(dplyr)
 
 
 #reads df, return a ggplot2 object
-makePlot = function(){
+makePlot = function(saveplot=FALSE){
     localdf = get("df", envir = .GlobalEnv) 
     localdf = drop_na(localdf)
-    p = ggplot(data = localdf, mapping = aes(x = posx, y = posy)) +
+    plot = ggplot(data = localdf, mapping = aes(x = posx, y = posy)) +
     geom_point() +
     xlim(-50,50) +
     ylim(-50,50) +
@@ -21,7 +21,15 @@ makePlot = function(){
         axis.ticks.y=element_blank(),
         axis.line.y=element_blank())
 
-    ggsave("plot.jpeg", plot = p, path = "images")}
+
+    if (saveplot){
+        ggsave("plot.jpeg", plot = plot, path = "images")
+        return(plot)
+    }else{
+         return(plot)
+    }
+
+  }
 
 #create an empty datafrane df
 createDf = function(){

@@ -23,7 +23,7 @@ obj003 = obj("003",0,17,0,0,0,0)
 obj.updateRdf()
 
 RmakePlot = robjects.globalenv['makePlot']    #make plot from df stored in R session
-RmakePlot()
+RmakePlot(saveplot = True)
 
 
 
@@ -32,7 +32,7 @@ RmakePlot()
 # #------------something here is profoundly wrong-----------------
 def updateWindow(): #update window loop
     #visualize data stored in df   
-    RmakePlot()
+    RmakePlot(saveplot = True)
     image = Image.open("images/plot.jpeg")
     image = ImageTk.PhotoImage(image)
     
