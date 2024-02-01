@@ -24,7 +24,7 @@ RupdateDf = robjects.globalenv['updateDf']
 RupdateDf()
 
 RmakePlot = robjects.globalenv['makePlot']    #make plot from df stored in R session
-RmakePlot(saveplot = True)
+img = RmakePlot()
 
 
 
@@ -33,9 +33,9 @@ RmakePlot(saveplot = True)
 # #------------something here is profoundly wrong-----------------
 def updateWindow(): #update window loop
     #visualize data stored in df   
-    RmakePlot(saveplot = True)
-    image = Image.open("images/plot.jpeg")
-    image = ImageTk.PhotoImage(image)
+    img = RmakePlot()
+    # image = Image.open("images/plot.jpeg")
+    # image = ImageTk.PhotoImage(image)
     
     
 
@@ -44,25 +44,24 @@ def updateWindow(): #update window loop
     for i in obj.existing_objs:
         i.updateObjA()
         i.updateObjVP()
-
     RupdateDf()
 
 
 
-    #label.config(image = "images/devil-may-cry-devil-may-cry3.gif")
-    # root.update()
-    # root.after(10, updateWindow)
+    label = tk.Label(root, image = img)
+    label.place(anchor="center", relx=0.5, rely = 0.5)
+    root.update()
+    root.after(100, updateWindow)
 
 
 
 
 root = tk.Tk()
 root.geometry("1000x1000")
-image = Image.open("images/plot.jpeg")
-image = ImageTk.PhotoImage(image)
-label = tk.Label(root, image = image)
+# image = Image.open("images/plot.jpeg")
+# image = ImageTk.PhotoImage(image)
+label = tk.Label(root, image = img)
 label.place(anchor="center", relx=0.5, rely = 0.5)
-print(type(label))
 
 root.after(1000,updateWindow)
 root.mainloop()
