@@ -20,7 +20,8 @@ obj002 = obj("002",10,0,0,0,0,0)
 obj003 = obj("003",0,17,0,0,0,0)
 
 
-obj.updateRdf()
+RupdateDf = robjects.globalenv['updateDf']
+RupdateDf()
 
 RmakePlot = robjects.globalenv['makePlot']    #make plot from df stored in R session
 RmakePlot(saveplot = True)
@@ -44,7 +45,7 @@ def updateWindow(): #update window loop
         i.updateObjA()
         i.updateObjVP()
 
-    obj.updateRdf() ###########something wrong with rpy2? 
+    RupdateDf()
 
 
 

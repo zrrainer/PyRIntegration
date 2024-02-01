@@ -2,12 +2,12 @@ import math
 import numpy
 import scipy
 from scipy import constants
-import rpy2
-import rpy2.robjects as robjects
-from rpy2.robjects import rl
+#import rpy2
+#import rpy2.robjects as robjects
+#from rpy2.robjects import rl
 
-r = robjects.r
-r.source("./module/Rscript.R")
+#r = robjects.r
+#r.source("./module/Rscript.R")
 
 class obj():
     existing_objs = []
@@ -82,19 +82,6 @@ class obj():
     def returnobjInfo(self):
       return [self.id, self.posx, self.posy]
     
-
-    #prob works
-    #i mean its kinda hard to fuck this up
-    @classmethod
-    def updateRdf(cls):
-        #clear R df
-        RcreateDf = robjects.globalenv['createDf']
-        RcreateDf()
-
-        #add all exiting objects to df #############
-        RappendRow = robjects.globalenv['AppendRow']
-        for i in cls.existing_objs:
-            RappendRow([i.id, i.posx, i.posy])
 
     
     # helper function: find the angle in radians between the line from origin to (ydiff,xdiff) and the x axis

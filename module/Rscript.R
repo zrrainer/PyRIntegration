@@ -1,7 +1,8 @@
 library(tidyverse)
 library(tidymodels)
 library(dplyr)
-
+library(reticulate)
+pythonScript = source_python("module/pythonScript.py")
 
 #reads df, return a ggplot2 object
 makePlot = function(saveplot=FALSE){
