@@ -91,7 +91,7 @@ class obj():
         RcreateDf = robjects.globalenv['createDf']
         RcreateDf()
 
-        #add all exiting objects to df
+        #add all exiting objects to df #############
         RappendRow = robjects.globalenv['AppendRow']
         for i in cls.existing_objs:
             RappendRow([i.id, i.posx, i.posy])

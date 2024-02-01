@@ -29,7 +29,7 @@ RmakePlot()
 
 
 
-#------------something here is profoundly wrong-----------------
+# #------------something here is profoundly wrong-----------------
 def updateWindow(): #update window loop
     #visualize data stored in df   
     RmakePlot()
@@ -37,19 +37,20 @@ def updateWindow(): #update window loop
     image = ImageTk.PhotoImage(image)
     
     
-    #clear df 
+
     
-    #calculate next step & update df
+    # #calculate next step & update df
     for i in obj.existing_objs:
         i.updateObjA()
         i.updateObjVP()
 
-    obj.updateRdf()
+    obj.updateRdf() ###########something wrong with rpy2? 
 
 
-    label.config(image = image)
-    root.update()
-    root.after(10, updateWindow)
+
+    #label.config(image = "images/devil-may-cry-devil-may-cry3.gif")
+    # root.update()
+    # root.after(10, updateWindow)
 
 
 
@@ -62,6 +63,6 @@ label = tk.Label(root, image = image)
 label.place(anchor="center", relx=0.5, rely = 0.5)
 print(type(label))
 
-# root.after(10,updateWindow)
+root.after(1000,updateWindow)
 root.mainloop()
     
